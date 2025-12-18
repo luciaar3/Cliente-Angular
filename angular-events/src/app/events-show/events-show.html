@@ -1,0 +1,20 @@
+<div class="row">
+  @if (events && events.length > 0) {
+    @for (event of events; track event.title) {
+      <div class="col-6 mt-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{ event.title }}</h4>
+            <p class="card-text">{{ event.description }}</p>
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-between">
+            <span>{{ event.date }}</span>
+            <span>{{ event.price }}€</span>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <h3>No hay eventos disponibles</h3>
+  }
+</div>
