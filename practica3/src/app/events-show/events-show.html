@@ -16,25 +16,16 @@
 
 <div class="row">
   @if (events && events.length > 0) {
-  @for (event of events | eventFilter: searchText; track event.title) {
-  <div class="col-6 mt-4">
-    <div class="card">
-      <img src="{{event.image}}" alt="Imagen del {{event.title}}" width="100%">
-      <div class="card-body">
-        <h4 class="card-title"  [innerText]="event.title | titlecase"></h4>
-        <p class="card-text"  [innerText]="event.description"></p>
+  @for (let i = 0; i < eventos.length; i++) {
+      <div class="col-6 mt-4">
+        <evento-item [event]="events[i]" (delete)="eliminarEvento(events[i])"></evento-item>
       </div>
-      <div class="card-footer text-muted d-flex justify-content-between">
-        <span>{{ event.date | date: 'dd-MM-yyyy'}}</span>
-        <span>{{ event.price | currency: 'EUR'}}</span>
-      </div>
-    </div>
-  </div>
-  }
+    }
   } @else {
   <h3>No hay eventos disponibles</h3>
   }
-
+   </div>
+<evento-add (addEvento)="agregarEvento($event)"></evento-add>
   <form class="mt-4" (ngSubmit)="addEvent()">
     <div class="form-group">
       <label for="name">Nombre</label>

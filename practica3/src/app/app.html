@@ -5,14 +5,3 @@
   <!-- Insertar aquí el componente events-show -->
    <app-events-show></app-events-show>
 </div>
-
-
-
-<evento-add (addEvento)="agregarEvento($event)"></evento-add>
-
-
-@for (evento of eventos; track evento) {
-  <evento-item class="card" [evento]="evento" (delete)="eliminarEvento(evento)"></evento-item>
-}
-
-

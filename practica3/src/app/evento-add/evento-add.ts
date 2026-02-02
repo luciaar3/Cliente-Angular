@@ -21,7 +21,7 @@ export class EventoAdd {
     };
 
   guardarEvento(){
-    this.addEvento.emit(this.nuevoEvento);
+    this.addEvento.emit({ ...this.nuevoEvento});
 
     this.nuevoEvento =
     {
@@ -31,5 +31,15 @@ export class EventoAdd {
       price:  0,
       image : '',
     };
+  }
+
+  changeImage(input: any) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.nuevoEvento.image = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 }

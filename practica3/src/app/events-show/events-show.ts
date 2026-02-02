@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { IEvent } from '../interfaces/i-event';
-import { CurrencyPipe } from '@angular/common';
-import { DatePipe } from '@angular/common';
-import { TitleCasePipe } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { eventFilterPipe } from '../pipes/event-filter-pipe';
+import { Evento } from '../servicios/evento';
+import { EventoAdd } from '../evento-add/evento-add';
 
 @Component({
   selector: 'app-events-show',
-  imports: [CurrencyPipe, DatePipe, TitleCasePipe, NgClass, eventFilterPipe, FormsModule],
+  imports: [NgClass, FormsModule, EventoAdd],
   templateUrl: './events-show.html',
   styleUrl: './events-show.css',
 })
@@ -29,24 +27,6 @@ export class EventsShow {
     );
   }
   searchText: string = '';
-
-
-  events: IEvent[] = [
-    {
-      title: 'Concierto de Taylor Swift',
-      image: '/img1.jpg',
-      date: '2027-12-04',
-      description: 'Fabuloso concierto de la gran cantante Taylor Swift',
-      price: 24.99,
-    },
-    {
-      title: 'Concierto de Rosalía',
-      image: '/img2.webp',
-      date: '2026-12-17',
-      description: 'Fabuloso concierto de la gran cantante Rosalía',
-      price: 45.99,
-    },
-  ];
 
   newEvent: IEvent = {
     title: '',
@@ -68,6 +48,22 @@ export class EventsShow {
     reader.addEventListener('loadend', e => {
       this.newEvent.image = reader.result as string;
     });
+  }
+
+  events: IEvent[] = [];
+
+  constructor(private eventoService: Evento) {}
+
+  ngOnInit() {
+    this.events = this.eventoService.getEventos();
+  }
+
+  eliminarEvento(evento: IEvent) {
+  this.events = this.events.filter(e => e !== evento);
+  }
+
+  agregarEvento(evento: IEvent) {
+    this.events = [...this.events, evento];
   }
 
 }
