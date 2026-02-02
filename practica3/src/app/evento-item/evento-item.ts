@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Input, Output } from '@angular/core';
-import { IEvento } from './interfaces/i-evento';
+import { IEvent } from '../interfaces/i-event';
 
 @Component({
   selector: 'evento-item',
@@ -11,7 +11,7 @@ import { IEvento } from './interfaces/i-evento';
 })
 export class EventoItem {
 
-  @Input() evento!: IEvento;
+  @Input() evento!: IEvent;
   @Output() delete = new EventEmitter<void>();
 
   deleteEvento(){

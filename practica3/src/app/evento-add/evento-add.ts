@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { IEvento } from '../evento-item/interfaces/i-evento';
+import { IEvent } from '../interfaces/i-event';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class EventoAdd {
 
-  @Output() addEvento = new EventEmitter<IEvento>();
+  @Output() addEvento = new EventEmitter<IEvent>();
 
-  nuevoEvento: IEvento ={
-      titulo: '',
-      descripcion: '',
-      imagen : '',
+  nuevoEvento: IEvent ={
+      title: '',
+      description: '',
+      date: '',
+      price:  0,
+      image : '',
     };
 
   guardarEvento(){
@@ -23,9 +25,11 @@ export class EventoAdd {
 
     this.nuevoEvento =
     {
-      titulo: '',
-      descripcion: '',
-      imagen : '',
+      title: '',
+      description: '',
+      date: '',
+      price:  0,
+      image : '',
     };
   }
 }

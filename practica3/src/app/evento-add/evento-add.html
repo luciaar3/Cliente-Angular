@@ -1,8 +1,8 @@
 <h1>Añade un evento</h1>
 <form (ngSubmit)="guardarEvento()">
     <label for="title">Nombre del evento: </label>
-    <input type="text" [(ngModel)]="nuevoEvento.titulo" name="title"><br>
+    <input type="text" [(ngModel)]="nuevoEvento.title" name="title"><br>
     <label for="description">Descripción: </label>
-    <textarea [(ngModel)]="nuevoEvento.descripcion" name="description"></textarea><br>
+    <textarea [(ngModel)]="nuevoEvento.description" name="description"></textarea><br>
     <button type="submit">Add</button>
 </form>
