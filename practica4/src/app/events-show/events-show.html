@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-light justify-content-between mt-3">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderDate()">Orden por fecha</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderPrice()">Orden por precio</a>
+    </li>
+  </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText" name="search" placeholder="Search"
+      aria-label="Search">
+    <p>{{searchText}}</p>
+  </form>
+</nav>
+
+<div class="row">
+  @if (events && events.length > 0) {
+    @for (event of events; track event) {
+      <div class="col-6 mt-4">
+        <evento-item 
+          [evento]="event"
+          (delete)="eliminarEvento(event)">
+        </evento-item>
+      </div>
+    }
+  } @else {
+  <h3>No hay eventos disponibles</h3>
+  }
+   </div>
+<evento-add (addEvento)="agregarEvento($event)"></evento-add>
+  
