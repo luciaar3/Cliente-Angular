@@ -4,10 +4,11 @@ import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Evento } from '../servicios/evento';
 import { EventoAdd } from '../evento-add/evento-add';
+import { EventoItem } from '../evento-item/evento-item';
 
 @Component({
   selector: 'app-events-show',
-  imports: [NgClass, FormsModule, EventoAdd],
+  imports: [NgClass, FormsModule, EventoAdd, EventoItem],
   templateUrl: './events-show.html',
   styleUrl: './events-show.css',
 })
