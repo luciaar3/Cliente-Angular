@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { IEvent } from '../interfaces/i-event';
 import { FormsModule } from '@angular/forms';
+import { Evento } from '../servicios/evento';
 
 @Component({
   selector: 'evento-add',

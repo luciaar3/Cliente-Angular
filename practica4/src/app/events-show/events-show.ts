@@ -5,6 +5,7 @@ import { Evento } from '../servicios/evento';
 import { EventoAdd } from '../evento-add/evento-add';
 import { EventoItem } from '../evento-item/evento-item';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-events-show',
@@ -30,6 +31,7 @@ export class EventsShow {
   searchText: string = '';
 
   newEvent: IEvent = {
+    id: '',
     title: '',
     description: '',
     image: '',
@@ -39,7 +41,7 @@ export class EventsShow {
 
   addEvent(): void {
     this.events.push({ ...this.newEvent });
-    this.newEvent = { title: '', description: '', image: '', price: 0, date: '' };
+    this.newEvent = {id: '', title: '', description: '', image: '', price: 0, date: '' };
   }
 
   changeImage(fileInput: HTMLInputElement) {
@@ -53,18 +55,21 @@ export class EventsShow {
 
   events: IEvent[] = [];
 
-  constructor(private eventoService: Evento) {}
-    
-  ngOnInit() {
-    this.eventoService.getEventos().subscribe((data) => (this.events = data));
-  }
+  events$: Observable<IEvent[]> | undefined;
 
+  constructor(private eventoService: Evento) {
+    this.events$ = this.eventoService.getEventos();
+  }
+    
   eliminarEvento(evento: IEvent) {
-  this.events = this.events.filter(e => e !== evento);
+  this.eventoService.deleteEventos(evento.id!).subscribe(() =>
+    this.events = this.events.filter(e => e.id !== evento.id));
   }
 
   agregarEvento(evento: IEvent) {
-    this.events = [...this.events, evento];
+    this.eventoService.addEventos(evento).subscribe(e => {
+      this.events = [...this.events, e];
+    }); 
   }
 
 }
