@@ -6,10 +6,11 @@ import { EventoAdd } from '../evento-add/evento-add';
 import { EventoItem } from '../evento-item/evento-item';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-events-show',
-  imports: [CommonModule, FormsModule, EventoAdd, EventoItem],
+  imports: [CommonModule, FormsModule, EventoAdd, EventoItem, RouterLink],
   templateUrl: './events-show.html',
   styleUrl: './events-show.css',
 })

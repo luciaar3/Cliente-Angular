@@ -5,6 +5,7 @@ import { EventoAdd } from './evento-add/evento-add';
 import { EventsShow } from './events-show/events-show';
 import { eventFilterPipe } from './pipes/event-filter-pipe';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,FormsModule, eventFilterPipe, EventoItem, EventoAdd, EventsShow],

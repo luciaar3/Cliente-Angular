@@ -7,14 +7,6 @@
       "date": "2024-02-10",
       "description": "Descripción del primer evento",
       "price": 20
-    },
-    {
-      "id": "2",
-      "title": "Evento 2",
-      "image": "https://picsum.photos/200/300",
-      "date": "2024-05-20",
-      "description": "Descripción del segundo evento",
-      "price": 40
     }
   ]
 }
